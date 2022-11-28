@@ -37,4 +37,11 @@
 
 <img src="ddss.png">
 
+## Understanding core concepts 
+
+### Kafka Topic 
+
+<img src="topic1.png">
+
+
 
