@@ -59,5 +59,23 @@
 
 ## Introduction to Producers 
 
+<p> The One who sends data kafka broker , targeting a topic and its partitions <p/>
+
+<img src="producers1.png">
+
+### Producer message concept for sending data to kafka broker 
+
+<p> if kafka message is not having any fixed key in message , then it will send message to a topic's partition in round robin manner </p>
+
+<img src="rr.png">
+
+<p> but if producer message is gonna have some key , so the same key will send data to same partition of the topic </p>
+
+<img src="hash.png">
+
+### producer  message look like 
+
+<img src="message.png">
+
 
 
