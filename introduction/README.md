@@ -43,5 +43,21 @@
 
 <img src="topic1.png">
 
+### Kafka partitions & offsets 
+
+<p> Each kafka topics can have many partitions and each partitions gonna have order number called offsets </p>
+
+<img src="partoff.png">
+
+### Understanding using truck GPS system 
+
+<img src="exampletopic.png">
+
+### partitions and offsets -- logic for timeout and reuse
+
+<img src="reuse.png">
+
+## Introduction to Producers 
+
 
 
