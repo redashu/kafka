@@ -77,5 +77,90 @@
 
 <img src="message.png">
 
+### How Kafka Message gets accept ---> Using KAFKA Message SERIALIZER
+
+<p> Kafka message get created by producers but Kafka server can't accept a general text message </p>
+<p> So Kafka Message Serializer converting messages into bytes  </p>
+<p> Note: Kafka producers comes with common serializers like -- int , string ,float ,avro , protobuf and so on </p>
+
+### how the message serializer works on producer side 
+
+<img src="serializer.png">
+
+## Kafka COnsumers 
+
+### Understanding 
+
+<p>THe one who reads messages from kafka topics --few more info is given below </p>
+
+<img src="producer1.png">
+
+### Decoding message by consumer 
+
+<p> Note: consumer has to know in advanced that message is having which data type of message for keys and values so that it can use that serializer to decode <p/>
+
+
+<img src="deserializer.png">
+
+
+## KAFKA Broker / server 
+
+<p> Kafka broker are those servers with in kafka cluster who receives message </p>
+
+### some more info about kafka brokers 
+
+<img src="broker1.png">
+
+### topic with broker 
+
+<img src="topicbr.png">
+
+### kafka broker discovery
+
+<p> SO kafka client will connect to any one broker -- that is known as KAFKA Bootstrap server </p>
+<p> that kafka bootstrap server after connected from client will send the list of all brokers </p>
+
+### more info is given below 
+
+<img src="kafkacl.png">
+
+### producer to -- partition 
+
+<img src="leader.png">
+
+### fetching details by consumers from a non leader partition broker
+
+<img src="fetch1.png">
+
+### consumer ack system 
+
+<img src="ack1.png">
+
+# ROle of Zookeeper -- the Kafka broker manager till kafka version 2.x 
+
+### some more info about zookeeper
+
+<img src="zoo1.png">
+
+### zookeeper with kafka brokers 
+
+<img src="zoo2.png">
+
+### do not use zookeeper from kafka client
+
+<img src="zoo3.png">
+
+### final zookeeper with kafka 
+
+<img src="zoo4.png">
+
+### kafka architecture with and without zookeeper 
+
+<img src="kafka-arch1.png">
+
+
+
+
+
 
 
