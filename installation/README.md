@@ -34,6 +34,22 @@ zookeeper-server-start.sh  /opt/kafka_2.13-3.3.1/config/zookeeper.properties
 [root@ip-172-31-13-141 kafka_2.13-3.3.1]# kafka-server-start.sh  /opt/kafka_2.13-3.3.1/config/server.properties
 ```
 
+### KAFKA without zookeeper 
+
+```
+[root@ip-172-31-13-141 kafka_2.13-3.3.1]# kafka-storage.sh  random-uuid
+XsIWkIEkShG1ymikn-JI0g
+
+
+```
+
+### then 
+
+```
+[root@ip-172-31-13-141 kafka_2.13-3.3.1]# kafka-storage.sh  format -t XsIWkIEkShG1ymikn-JI0g -c config/kraft/server.properties 
+Formatting /tmp/kraft-combined-logs with metadata.version 3.3-IV3.
+```
+
 # Kafka Cluster 
 
 ### with Zookeeper -- we need
