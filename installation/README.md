@@ -1,4 +1,4 @@
-## Install kafka on a standalone server 
+## Install kafka on a standalone server  with zookeeper
 
 ### setup jdk 11 
 
@@ -16,6 +16,23 @@ OpenJDK 64-Bit Server VM (Red_Hat-11.0.16.0.8-1.amzn2.0.1) (build 11.0.16+8-LTS,
 [root@ip-172-31-13-141 ~]# 
 ```
 
+### download kafka 3.x binary then setup in a path variable 
+
+```
+ wget https://downloads.apache.org/kafka/3.3.1/kafka_2.13-3.3.1.tgz
+  tar xvzf kafka_2.13-3.3.1.tgz 
+```
+### start zookeeper -- Note you can create systemd-unit file 
+
+```
+zookeeper-server-start.sh  /opt/kafka_2.13-3.3.1/config/zookeeper.properties
+```
+
+### Now start kafka single cluster or create systemd file 
+
+```
+[root@ip-172-31-13-141 kafka_2.13-3.3.1]# kafka-server-start.sh  /opt/kafka_2.13-3.3.1/config/server.properties
+```
 
 # Kafka Cluster 
 
