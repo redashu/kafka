@@ -50,7 +50,14 @@ XsIWkIEkShG1ymikn-JI0g
 Formatting /tmp/kraft-combined-logs with metadata.version 3.3-IV3.
 ```
 
+===
+```
+[root@ip-172-31-13-141 kafka_2.13-3.3.1]# kafka-server-start.sh  config/kraft/server.properties 
+```
+
+
 # Kafka Cluster 
+
 
 ### with Zookeeper -- we need
 
