@@ -16,3 +16,28 @@ OpenJDK 64-Bit Server VM (Red_Hat-11.0.16.0.8-1.amzn2.0.1) (build 11.0.16+8-LTS,
 [root@ip-172-31-13-141 ~]# 
 ```
 
+
+# Kafka Cluster 
+
+### with Zookeeper -- we need
+
+<img src="need.png">
+
+### Zookeeper QuoRUm architecture 
+
+<img src="zoo1.png">
+
+### Kafka architecture 
+
+<img src="kafkazoo2.png">
+
+
+## Zookeeper info 
+
+### Concept 
+<img src="concept.png">
+
+===
+
+
+
