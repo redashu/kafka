@@ -274,6 +274,14 @@ auto.create.topics.enable=true
 kafka-topics.sh  --bootstrap-server localhost:9092 --create --topic ashu-logs --replication-factor 1 --partitions 3 
 ```
 
+### listing topic 
+
+```
+[root@ip-172-31-13-141 ~]# kafka-topics.sh  --bootstrap-server localhost:9092 --list
+__consumer_offsets
+ashu-logs
+```
+
 ### lets read message 
 
 ```
