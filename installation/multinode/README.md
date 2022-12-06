@@ -173,4 +173,21 @@ Node count: 5
 
 ```
 
+### now changing configure for multi node 
+
+```
+tickTime=2000
+# number of ticks that initial sync can take while starting zookeeper 
+initLimit=10
+# sending request and getting ack 
+syncLimit=5
+# admin.serverPort=8080
+server.1=ip-172-31-13-141.ap-south-1.compute.internal:2888:3888
+server.2=ip-172-31-8-169.ap-south-1.compute.internal:2888:3888
+server.3=ip-172-31-1-166.ap-south-1.compute.internal:2888:3888
+
+```
+
+
+
 
