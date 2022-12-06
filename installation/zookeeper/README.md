@@ -56,3 +56,81 @@ Mode: standalone
 Node count: 5
 
 ```
+
+## lets connect to zookeeper command line 
+
+### connecting using shell script 
+
+```
+[root@ip-172-31-13-141 ~]# zookeeper-shell.sh   localhost:2181
+Connecting to localhost:2181
+Welcome to ZooKeeper!
+JLine support is disabled
+
+WATCHER::
+
+WatchedEvent state:SyncConnected type:None path:null
+ls /
+[zookeeper]
+
+==
+
+create /mynode "hello"
+Created /mynode
+ls /
+[mynode, zookeeper]
+```
+### getting data
+
+```
+get /mynode
+hello
+```
+
+### 
+
+```
+get /mynode
+hello
+create /mynode/app1
+Created /mynode/app1
+create /mynode/app2
+Created /mynode/app2
+create /mynode/app1 "i am storing"
+Node already exists: /mynode/app1
+ls /mynode
+[app1, app2]
+```
+
+### deleting node 
+
+```
+delete /mynode
+Node not empty: /mynode
+deleteall /mynode
+ls /
+[zookeeper]
+```
+
+### --- 
+
+```
+get -s -w /ashudata true 
+'get path [watch]' has been deprecated. Please use 'get [-s] [-w] path' instead.
+hello me
+cZxid = 0xd
+ctime = Tue Dec 06 05:04:48 UTC 2022
+mZxid = 0xe
+mtime = Tue Dec 06 05:04:57 UTC 2022
+pZxid = 0xd
+cversion = 0
+dataVersion = 1
+aclVersion = 0
+ephemeralOwner = 0x0
+dataLength = 8
+numChildren = 0
+
+```
+
+
+
