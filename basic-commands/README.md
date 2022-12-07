@@ -79,3 +79,107 @@ Connections Sets (2)/(2):
 
 ```
 
+## connecting kafka from kafka client --make kafka client can reach to kafka server with hostname of kafka 
+
+### listing topics
+
+```
+[root@control-plane ~]# kafka-topics.sh  --bootstrap-server  ip-172-31-13-141.ap-south-1.compute.internal:9092  --list
+__consumer_offsets
+ashu-app-logs
+ashu-logs
+```
+
+### creating topics 
+
+```
+[root@control-plane ~]# kafka-topics.sh  --bootstrap-server  ip-172-31-13-141.ap-south-1.compute.internal:9092  --create --topic   ashu-app-analytics  --partitions 5 --replication-factor  2
+Created topic ashu-app-analytics.
+[root@control-plane ~]# 
+[root@control-plane ~]# kafka-topics.sh  --bootstrap-server  ip-172-31-13-141.ap-south-1.compute.internal:9092  --list
+__consumer_offsets
+ashu-app-analytics
+ashu-app-logs
+ashu-logs
+
+```
+
+### describing topics 
+
+```
+[root@control-plane ~]# kafka-topics.sh  --bootstrap-server  ip-172-31-13-141.ap-south-1.compute.internal:9092  --describe --topic  ashu-app-logs
+Topic: ashu-app-logs	TopicId: AoNAvR49QK6eapT_nwMzZQ	PartitionCount: 4	ReplicationFactor: 2	Configs: 
+	Topic: ashu-app-logs	Partition: 0	Leader: 3	Replicas: 3,1	Isr: 3,1
+	Topic: ashu-app-logs	Partition: 1	Leader: 1	Replicas: 1,2	Isr: 1,2
+	Topic: ashu-app-logs	Partition: 2	Leader: 2	Replicas: 2,3	Isr: 2,3
+	Topic: ashu-app-logs	Partition: 3	Leader: 3	Replicas: 3,2	Isr: 3,2
+```
+
+## Note: here replicas means for each partition how many replicas we are having and  they are stored in which brokers
+
+
+
+### using producer to generate data in a topic 
+
+```
+[root@control-plane ~]# kafka-topics.sh  --bootstrap-server  ip-172-31-13-141.ap-south-1.compute.internal:9092  --list
+__consumer_offsets
+ashu-app-analytics
+ashu-app-logs
+ashu-logs
+---
+
+[root@control-plane ~]# 
+[root@control-plane ~]# 
+[root@control-plane ~]# kafka-console-producer.sh  --bootstrap-server  ip-172-31-13-141.ap-south-1.compute.internal:9092 --topic  ashu-app-logs 
+>hey this is me ashutoshh
+>^C[root@control-plane ~]
+```
+
+### lets use consumer 
+
+```
+kafka-console-consumer.sh  --bootstrap-server  ip-172-31-13-141.ap-south-1.compute.internal:9092  --topic  ashu-app-logs --from-beginning
+hey this is me ashutoshh
+hey there i am ahsutoshh writing data to you
+```
+
+## Note : every consumer creates a consumer group to read message -- and kafka automatically creates a consumer group 
+
+### lets check consumer group 
+
+```
+[root@control-plane ~]# kafka-consumer-groups.sh  --bootstrap-server  ip-172-31-13-141.ap-south-1.compute.internal:9092  --list
+console-consumer-87873
+```
+
+### checking it again : note : make sure consumer is active then only it will work 
+
+```
+[root@control-plane ~]# kafka-consumer-groups.sh  --bootstrap-server  ip-172-31-13-141.ap-south-1.compute.internal:9092  --list
+console-consumer-87873
+
+
+[root@control-plane ~]# kafka-consumer-groups.sh  --bootstrap-server  ip-172-31-13-141.ap-south-1.compute.internal:9092  --describe  --group console-consumer-87873
+
+Consumer group 'console-consumer-87873' has no active members.
+
+
+[root@control-plane ~]# kafka-consumer-groups.sh  --bootstrap-server  ip-172-31-13-141.ap-south-1.compute.internal:9092  --list
+console-consumer-87873
+console-consumer-85406
+
+
+[root@control-plane ~]# 
+[root@control-plane ~]# kafka-consumer-groups.sh  --bootstrap-server  ip-172-31-13-141.ap-south-1.compute.internal:9092  --describe  --group console-consumer-85406
+
+GROUP                  TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                           HOST            CLIENT-ID
+console-consumer-85406 ashu-app-logs   0          -               6               -               console-consumer-45cbc838-779c-4df6-9e56-bb3822882d44 /172.31.38.68   console-consumer
+console-consumer-85406 ashu-app-logs   1          -               0               -               console-consumer-45cbc838-779c-4df6-9e56-bb3822882d44 /172.31.38.68   console-consumer
+console-consumer-85406 ashu-app-logs   2          -               2               -               console-consumer-45cbc838-779c-4df6-9e56-bb3822882d44 /172.31.38.68   console-consumer
+console-consumer-85406 ashu-app-logs   3          -               3               -               console-consumer-45cbc838-779c-4df6-9e56-bb3822882d44 /172.31.38.68   console-consumer
+[root@control-plane ~]# 
+
+
+
+```
