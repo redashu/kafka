@@ -5,3 +5,6 @@
 <b> the official SDK for apache kafka is Java </b>
 <p> other languages can also be used like c++,python , golang etc. </p>
 
+### java with SSL code 
+
+
