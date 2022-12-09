@@ -93,3 +93,33 @@ kafka-console-producer.sh --bootstrap-server localhost:9092 --topic streams-plai
 
 <img src="registry.png">
 
+## Introduction to Kafka KSQLDB 
+
+### kafka is not a 
+
+<img src="not1.png">
+
+### Note: if kafka is storing message then consumer is getting that message process that data with the help of streaming platform like 
+<p>apache spark , flink , storm </p>
+
+### Lets understanding kafka streaming 
+
+<p> its a client library which read data from One topic and write back to another topic </p>
+
+<img src="str.png">
+
+### problem with kafka stream 
+
+<img src="kafkastr-prob.png">
+
+# Note: Now problem with kafka stream is -- we have to write so huge amount of code in java to achieve streaming features
+
+### Introducing kafka SQL -- KSQL is giving stream power without writing java code -- so we can write SQL queries 
+
+<img src="ksql1.png">
+
+### ksql architecture 
+
+<img src="karch.png">
+
+
