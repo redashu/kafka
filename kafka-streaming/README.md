@@ -79,3 +79,17 @@ kafka-run-class.sh org.apache.kafka.streams.examples.wordcount.WordCountDemo
 ```
 kafka-console-producer.sh --bootstrap-server localhost:9092 --topic streams-plaintext-input
 ```
+
+
+### kafka more extended topic
+
+<img src="kafkae.png">
+
+### kafka connect 
+
+<img src="kafka-conn.png">
+
+### schema registy 
+
+<img src="registry.png">
+
