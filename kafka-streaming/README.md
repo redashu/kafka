@@ -33,7 +33,7 @@
 Created topic ashu-t1.
 [root@control-plane ~]# kafka-topics.sh  --bootstrap-server localhost:9092  --list
 ashu-t1
-[root@control-plane ~]# kafka-topics.sh  --bootstrap-server localhost:9092  --create --topic streams-file-input --partitions 3 --replication-factor 1 
+[root@control-plane ~]# kafka-topics.sh  --bootstrap-server localhost:9092  --create --topic streams-plaintext-input --partitions 3 --replication-factor 1 
 Created topic streams-file-input.
 [root@control-plane ~]# 
 [root@control-plane ~]# kafka-topics.sh  --bootstrap-server localhost:9092  --create --topic streams-wordcount-output --partitions 3 --replication-factor 1 
@@ -49,9 +49,33 @@ streams-wordcount-output
 ### lets read data in topic what we written 
 
 ```
-[root@control-plane ~]# kafka-console-consumer.sh --bootstrap-server localhost:9092   --topic streams-file-input  --from-beginning 
+[root@control-plane ~]# kafka-console-consumer.sh --bootstrap-server localhost:9092   --topic streams-plaintext-input  --from-beginning 
 hey i am ashu
 my name is ashu
 i am ashu for kafka stream
 ```
 
+## Now to check Streaming message live 
+
+### step 1 terminal 1 
+
+```
+kafka-run-class.sh org.apache.kafka.streams.examples.wordcount.WordCountDemo
+```
+### in terminal 2 
+
+```
+./bin/kafka-console-consumer --bootstrap-server localhost:9092 \
+        --topic streams-wordcount-output \
+        --from-beginning \
+        --formatter kafka.tools.DefaultMessageFormatter \
+        --property print.key=true \
+        --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer \
+        --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
+```
+
+### in terminal 3  starting sending data 
+
+```
+kafka-console-producer.sh --bootstrap-server localhost:9092 --topic streams-plaintext-input
+```
